@@ -26,9 +26,9 @@ sh scripts/run.sh
 ```
 You can change the parameters in the script. The selected parameters are as follows:
 ```
-dataset: clinc | banking
-factor_of_clusters: 1 (default) | 2 | 3 | 4 
+dataset: clinc | banking | stackoverflow
 known_class_ratio: 0.25 | 0.5 | 0.75 (default)
+cluster_num_factor: 1 (default) | 2 | 3 | 4 
 ```
 
 ### Model
