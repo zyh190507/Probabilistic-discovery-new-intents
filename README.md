@@ -1,8 +1,7 @@
 # A Probabilistic Framework for Discovering New Intents
 
 ## Introduction
-This repository provides the official PyTorch implementation of the research paper [A Probabilistic Framework for Discovering New Intents](**Accepted by [ACL2023]**).
-
+This repository provides the official PyTorch implementation of the research paper 'A Probabilistic Framework for Discovering New Intents'
 ### Dependencies 
 
 We use anaconda to create python environment:
