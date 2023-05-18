@@ -1,4 +1,4 @@
-# Discovering New Intents with Deep Aligned Clustering
+# A Probabilistic Framework for Discovering New Intents
 A deep aligned clustering method to discover new intents. 
 
 **The proposed method together with baselines are also integrated into the [open intent discovery](https://github.com/thuiar/TEXTOIR/tree/main/open_intent_discovery) module in our another scalable framework [TEXTOIR](https://github.com/thuiar/TEXTOIR), enjoy it!**
