@@ -6,7 +6,7 @@ This repository provides the official PyTorch implementation of the research pap
 
 We use anaconda to create python environment:
 ```
-conda create --name python=3.6
+conda create --name python=3.9
 ```
 Install all required libraries:
 ```
