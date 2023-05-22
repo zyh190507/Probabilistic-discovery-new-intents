@@ -23,6 +23,12 @@ class ModelManager:
 
         if pretrained_model is None:
             pretrained_model = BertForModel.from_pretrained("./model", cache_dir = "", num_labels = data.n_known_cls)
+        if args.load_mtp:
+            b = torch.load(args.load_mtp)
+            for key in list(b.keys()):
+                if "backbone" in key:
+                    b[key[9:]] = b.pop(key)
+            pretrained_model.load_state_dict(b, strict=False)
 
         self.model = pretrained_model
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

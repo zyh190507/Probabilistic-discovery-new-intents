@@ -91,4 +91,6 @@ def init_model():
     parser.add_argument("--beta", default=0.6, type=float,
                         help="The rate for our loss")
 
+    parser.add_argument("--load_mtp", type=str, help="The path for the mtp2step model.")
+
     return parser

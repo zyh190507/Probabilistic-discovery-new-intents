@@ -24,10 +24,8 @@ Run the experiments by:
 ```
 sh scripts/run.sh
 ```
-
-
-
-
+To compare with MTP, please add the parameter --load_mtp , and move the checkpoint to the path. 
+We use MTP pretrain checkpoint https://github.com/fanolabs/NID_ACLARR2022. It gives pretrain ckpt in step1 , we further pretrain the checkpoint using its step2 method.
 
 ## Thanks
 Our code implementation is on the basis of https://github.com/thuiar/DeepAligned-Clustering
