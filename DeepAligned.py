@@ -23,12 +23,6 @@ class ModelManager:
 
         if pretrained_model is None:
             pretrained_model = BertForModel.from_pretrained("./model", cache_dir = "", num_labels = data.n_known_cls)
-            b = torch.load("./../NID_ACL/MTP2step_sf_12.1")
-            for key in list(b.keys()):
-                if "backbone" in key:
-                    b[key[9:]] = b.pop(key)
-            pretrained_model.load_state_dict(b, strict=False)
-            #pretrained_model = BertForModel.from_pretrained(gei, cache_dir="",num_labels=data.n_known_cls)
 
         self.model = pretrained_model
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -175,10 +169,6 @@ class ModelManager:
                 updata_semi_label[i]=updata_semi_label[a]
         return updata_semi_label
 
-
-
-
-
     def get_semi_loader(self, semi_input_ids, semi_input_mask, semi_segment_ids, semi_label_ids, args):
         semi_data = TensorDataset(semi_input_ids, semi_input_mask, semi_segment_ids, semi_label_ids)
         semi_sampler = SequentialSampler(semi_data)
@@ -204,16 +194,11 @@ class ModelManager:
             t0 = time()
             pseudo_labels = self.alignment(km, args)
 
-            if args.augment_data_2:
+            if args.augment_data:
                 updata_semi_label=self.update_dataset(km,feats,args.k)
                 train_semi_dataloader=self.update_pseudo_labels(pseudo_labels, args, data.semi_input_ids,data.semi_input_mask,data.semi_segment_ids,updata_semi_label)
             else:
                 train_semi_dataloader = self.update_pseudo_labels(pseudo_labels, args, data.semi_input_ids,data.semi_input_mask,data.semi_segment_ids,data.semi_label_ids)
-
-            '''
-            pseudo_labels = self.alignment(km, args)
-            train_semi_dataloader = self.update_pseudo_labels(pseudo_labels, args, data)
-            '''
 
             for batch in train_semi_dataloader:
                 batch = tuple(t.to(self.device) for t in batch)
@@ -278,34 +263,11 @@ class ModelManager:
             results = clustering_score(y_true, y_pred)
             jsonresults.update({epoch:results})
             print(results)
-            '''
-            feats, labels = self.get_features_labels(data.test_labeled_dataloader, self.model, args)
-            feats = feats.cpu().numpy()
-            km = KMeans(n_clusters=len(data.known_label_list)).fit(feats)
-            y_pred = km.labels_
-            y_true = labels.cpu().numpy()
-            results = clustering_score(y_true, y_pred)
-            jsonresults.update({(str(epoch)+"known"): results})
-            print("known:"+str(results))
 
-            feats, labels = self.get_features_labels(data.test_unlabeled_dataloader, self.model, args)
-            feats = feats.cpu().numpy()
-            km = KMeans(n_clusters=len(data.unknown_label_list)).fit(feats)
-            y_pred = km.labels_
-            y_true = labels.cpu().numpy()
-            results = clustering_score(y_true, y_pred)
-            jsonresults.update({(str(epoch) + "unknown"): results})
-            print("unknown:" + str(results))
-            '''
             if results["ACC"]+results["ARI"]+results["NMI"]>bestresults["ACC"]+bestresults["ARI"]+bestresults["NMI"]:
                 bestresults=results
 
             jsonresults.update({"best": bestresults})
-            '''
-            if epoch+1==1 or (epoch+1)%5==0:
-                a=self.eval_pretrain()
-                jsonresults.update({"eval"+str(epoch): a})
-            '''
 
             import json
             info_json=json.dumps(jsonresults,sort_keys=False,indent=4,separators=(",",": "))

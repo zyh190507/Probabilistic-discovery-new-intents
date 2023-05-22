@@ -55,7 +55,7 @@ class BertForModel(BertPreTrainedModel):
             return loss
         else:
             return pooled_output, logits
-'''
+
 class MPNetForModel(nn.Module):
     def __init__(self, model_name, num_labels):
         super().__init__()
@@ -116,4 +116,3 @@ class MPNetForModel(nn.Module):
             return loss
         else:
             return pooled_output, logits
-'''
