@@ -31,7 +31,8 @@ We use the MTP pretrain checkpoint https://github.com/fanolabs/NID_ACLARR2022. I
 ## Model
 The model architecture of Our method:
 
-![image](img.png)
+![Model](./architecture.png)
+
 
 ## Thanks
 Our code implementation is on the basis of https://github.com/thuiar/DeepAligned-Clustering
