@@ -30,8 +30,6 @@ sh scripts/run.sh
 
 
 ## Thanks
-Some of the code was adapted from:
-* https://github.com/thuiar/DeepAligned-Clustering
-* https://github.com/fanolabs/NID_ACLARR2022
+Our code implementation is on the basis of * https://github.com/thuiar/DeepAligned-Clustering
 
 
