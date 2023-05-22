@@ -30,6 +30,6 @@ sh scripts/run.sh
 
 
 ## Thanks
-Our code implementation is on the basis of * https://github.com/thuiar/DeepAligned-Clustering
+Our code implementation is on the basis of https://github.com/thuiar/DeepAligned-Clustering
 
 
