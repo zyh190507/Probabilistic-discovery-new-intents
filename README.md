@@ -34,7 +34,7 @@ The model architecture of Our method:
 ![Model](./architecture.png)
 
 
-## Thanks
+## Thanks && Acknowledgments
 Our code implementation is on the basis of https://github.com/thuiar/DeepAligned-Clustering
 
 
