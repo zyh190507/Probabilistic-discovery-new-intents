@@ -21,7 +21,7 @@ Set the path of the uncased-bert model (parameter "bert_model" in init_parameter
 ## Usage
 Run the experiments by: 
 ```
-sh scripts/run.sh
+bash run.sh
 ```
 To compare with MTP, please add the parameter --load_mtp and move the checkpoint to the path.
 
